@@ -254,7 +254,7 @@ generateSources root l files = withSystemTempDirectory "protoc-out" $ \tmpDir ->
     -- directory.
     let activeModules = collectActiveModules l
     let allModules = Set.fromList . concat . map snd $ activeModules
-    let usedInComponent f = ModuleName.fromString (Plugin.moduleNameStr "Proto" f)
+    let usedInComponent f = ModuleName.fromString f
                           `Set.member` allModules
     generateProtosWithImports (root : importDirs) tmpDir
                               -- Applying 'root </>' does nothing if the path is already
